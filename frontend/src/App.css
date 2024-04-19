@@ -1,0 +1,15 @@
+/*
+ Por padrão, esconde qualquer botão que esteja inserido dentro de uma DataGrid do Mui
+*/
+
+.MuiDataGrid-row button{
+  visibility: hidden;
+}
+
+/*
+Mas se o ponteiro do mouse estiver sobre a linha (houver), exibe novamente os botões
+*/
+
+.MuiDataGrid-row:hover button{
+  visibility: visible;
+}
