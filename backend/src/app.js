@@ -1,13 +1,13 @@
 import express, { json, urlencoded } from "express";
 //import cookieParser from "cookie-parser";
-import logger from "morgan";
-import dotenv from 'dotenv'
-import protectRoutes from './lib/protectRoutes.js'
+//import logger from "morgan";
+//import dotenv from 'dotenv'
+import protectRoutes from './lib/protectRotes.js'
 
-//import cors from 'cors'
+import cors from 'cors'
 
-import indexRouter from "./routes/index.js";
-import usersRouter from "./routes/users.js";
+import indexRouter from "./rotas/index.js";
+import usersRouter from "./rotas/users.js";
 
 // Importa as variáveis de ambiente do arquivo .env
 dotenv.config()
@@ -22,7 +22,7 @@ app.use(cors({
 app.use(logger("dev"));
 app.use(json());
 app.use(urlencoded({ extended: false }));
-app.use(cookieParser());
+//app.use(cookieParser());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -30,17 +30,16 @@ app.use("/users", usersRouter);
 /////////////////////////////////////////////////
 
 // Protege as rotas, exigindo autenticação prévia
-/*
+
 app.use(protectRoutes)
 
-import carRouter from './routes/car.js'
-app.use('/car', carRouter)
+import mesaRouter from './rotas/mesa.js'
+app.use('/mesa', mesaRouter)
 
-import customerRouter from './routes/customer.js'
-app.use('/customer', customerRouter)
+import pedidoRouter from './rotas/pedido.js'
+app.use('/pedido', pedidoRouter)
 
-import userRouter from './routes/user.js'
+import userRouter from './rotas/user.js'
 app.use('/user', userRouter)
 
 export default app;
-*/
