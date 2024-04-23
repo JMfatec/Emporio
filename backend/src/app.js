@@ -31,7 +31,7 @@ app.use("/users", usersRouter);
 
 // Protege as rotas, exigindo autenticação prévia
 
-app.use(protectRoutes)
+//app.use(protectRoutes)
 
 import mesaRouter from './rotas/mesa.js'
 app.use('/mesa', mesaRouter)

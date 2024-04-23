@@ -8,7 +8,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-//import PedidosMesa from '../pages';
+//import Cozinha from './pages/Cozinha.jsx';
 
 export default function MesasList() {
   const [state, setState] = React.useState({
@@ -100,6 +100,18 @@ export default function MesasList() {
     setState({ ...state, productHistory: newProductHistory });
   }
 
+  function Cozinha() {
+    //código para o componente Cozinha
+    return (
+      <div>
+        <h1>Cozinha</h1>
+        <MesasList /> {/* Aqui está usando o componente MesasList */}
+        {/* Outros elementos e lógica aqui */}
+      </div>
+    );
+  }
+  
+ 
   // Verifica se há algum item no histórico da mesa para definir a cor
   const tableColor = (index) =>
     productHistory[index] && productHistory[index].length > 0 ? 'red' : 'white';

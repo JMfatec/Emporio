@@ -20,7 +20,7 @@ export default function Homepage(){
               borderRadius: '10px',
               }
            }}>
-           <img src={image} alt="Carros antigos" />
+           <img src={image} alt=" " />
            </Box>
         </>   
     )

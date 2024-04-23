@@ -14,7 +14,8 @@ import MesasList from './pages/MesasList';
 import CardForm from './pages/CardForm';
 import './App.css'
 import Cozinha from './pages/Cozinha';
-//import PedidosMesa from './pages/PedidosMesa'
+import Login from './pages/Login'
+
 
 //import './App.css'
 
@@ -37,7 +38,8 @@ function App() {
        }}>
           
           <Routes>
-             <Route path='/' element={ <Homepage /> } />                   
+             <Route path='/' element={ <Homepage /> } />   
+             <Route path="/login" element={ <Login /> } />                
              <Route path='/mesas' element={ <MesasList /> } />
              <Route path='/cozinha' element={ <Cozinha /> } />
              <Route path='/card' element={ <CardForm /> } />
