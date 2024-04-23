@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-//import MesasList from './pages/MesasList.jsx'
+//import MesasList from './pages/MesasList'
 
 
 

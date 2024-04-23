@@ -15,6 +15,7 @@ import CardForm from './pages/CardForm';
 import './App.css'
 import Cozinha from './pages/Cozinha';
 import Login from './pages/Login'
+import Logout from './components/ui/Logout';
 
 
 //import './App.css'
@@ -39,7 +40,8 @@ function App() {
           
           <Routes>
              <Route path='/' element={ <Homepage /> } />   
-             <Route path="/login" element={ <Login /> } />                
+             <Route path="/login" element={ <Login /> } />  
+             <Route path="/logout" element={ <Logout /> } />              
              <Route path='/mesas' element={ <MesasList /> } />
              <Route path='/cozinha' element={ <Cozinha /> } />
              <Route path='/card' element={ <CardForm /> } />

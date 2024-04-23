@@ -6,8 +6,8 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import { useNavigate } from 'react-router-dom'
 import Waiting from '../components/ui/Waiting'
-//import Notification from '../components/ui/Notification'
-//import myfetch from '../utils/myfetch'
+import Notification from '../components/ui/Notification'
+import myfetch from '../utils/myfetch'
 
 export default function Login() {
 
@@ -144,7 +144,7 @@ export default function Login() {
               color="secondary"
               type="submit"
             >
-              Enviar
+              Login
             </Button>
           </Box>
         </form>
