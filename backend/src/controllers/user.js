@@ -3,12 +3,12 @@ import prisma from '../database/client.js'
 import jwt from 'jsonwebtoken'
 
 const controller = {}     // Objeto vazio
-/*
+
 controller.create = async function(req, res) {
   try {
 
     // Criptografa a senha com bcrypt, usando 12 passos
-    req.body.password = await bcrypt.hash(req.body.password, 12)
+   // req.body.password = await bcrypt.hash(req.body.password, 12)
 
     await prisma.user.create({ data: req.body })
 
@@ -21,7 +21,7 @@ controller.create = async function(req, res) {
     res.status(500).send(error)
   }
 }
-*/
+
 controller.retrieveAll = async function(req, res) {
   try{
 

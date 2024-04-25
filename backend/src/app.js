@@ -1,7 +1,7 @@
 import express, { json, urlencoded } from "express";
 //import cookieParser from "cookie-parser";
-//import logger from "morgan";
-//import dotenv from 'dotenv'
+import logger from "morgan";
+import dotenv from 'dotenv'
 import protectRoutes from './lib/protectRotes.js'
 
 import cors from 'cors'
@@ -31,7 +31,7 @@ app.use("/users", usersRouter);
 
 // Protege as rotas, exigindo autenticação prévia
 
-//app.use(protectRoutes)
+app.use(protectRoutes)
 
 import mesaRouter from './rotas/mesa.js'
 app.use('/mesa', mesaRouter)
