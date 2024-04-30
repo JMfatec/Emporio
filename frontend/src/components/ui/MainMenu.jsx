@@ -75,6 +75,22 @@ export default function MainMenu() {
         <MenuItem 
           onClick={handleClose}
           component={Link}
+          to="/emp/new"
+        >
+          Cadastro Funcionário
+        </MenuItem>
+
+        <MenuItem 
+          onClick={handleClose}
+          component={Link}
+          to="/emp"
+        >
+          Funcionários
+        </MenuItem>
+
+        <MenuItem 
+          onClick={handleClose}
+          component={Link}
           to="/login"
         >
           Entrar

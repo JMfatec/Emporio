@@ -1,5 +1,5 @@
 import prisma from '../database/client.js'
-//import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
 const controller = {}     // Objeto vazio
@@ -8,7 +8,7 @@ controller.create = async function(req, res) {
   try {
 
     // Criptografa a senha com bcrypt, usando 12 passos
-   // req.body.password = await bcrypt.hash(req.body.password, 12)
+   req.body.password = await bcrypt.hash(req.body.password, 12)
 
     await prisma.user.create({ data: req.body })
 
@@ -100,7 +100,7 @@ controller.delete = async function(req, res) {
     const result = await prisma.user.delete({
       where: { id: Number(req.params.id) }
     })
-    
+    console.log(result)
     // HTTP 204: No Content
     if(result) res.status(204).end()
     // HTTP 404: Not Found
@@ -144,7 +144,7 @@ controller.login = async function(req, res) {
         { expiresIn: '24h' }         // Prazo de validade do token
       )
 
-      // Forma o cookie para retornar ao front-end
+      //Forma o cookie para retornar ao front-end
       res.cookie('_data_', token, {
         httpOnly: true,       // HTTP only: o cookie ficará inacessível via JS
         secure: true,
@@ -153,7 +153,7 @@ controller.login = async function(req, res) {
         maxAge: 24 * 60 * 60 * 1000  // 24h
       })
 
-      // console.log(token)
+      console.log(token)
 
       // Retorna HTTP 204: No content
       res.status(204).end()

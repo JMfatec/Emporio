@@ -37,3 +37,18 @@ model User{
   password                  String
   is_admin                  Boolean    @default(false)
 }
+
+model Emp {
+  id                        Int        @id @default(autoincrement())
+  name                      String     
+  ident_document            String
+  birth_date                DateTime? 
+  street_name               String
+  house_number              String
+  complements               String?     //Complemento do endereço
+  neighborhood              String               //Bairro
+  municipality              String                
+  state                     String
+  phone                     String
+  email                     String      @unique
+}

@@ -7,12 +7,6 @@
 import app from "../app.js";
 import chalk from "chalk";
 import { createServer } from "http";
-/*
-import { createClient } from '@supabase/supabase-js'
-const supabaseUrl = 'https://yrftkdedlymrkdqnxyoi.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
-*/
 
 /**
  * Get port from environment and store in Express.

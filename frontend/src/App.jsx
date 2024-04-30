@@ -16,6 +16,8 @@ import './App.css'
 import Cozinha from './pages/Cozinha';
 import Login from './pages/Login'
 import Logout from './components/ui/Logout';
+import EmpList from './pages/EmpList'
+import EmpForm from './pages/EmpForm'
 
 
 //import './App.css'
@@ -40,8 +42,10 @@ function App() {
           
           <Routes>
              <Route path='/' element={ <Homepage /> } />   
-             <Route path="/login" element={ <Login /> } />  
-             <Route path="/logout" element={ <Logout /> } />              
+             <Route path="/login" element={ <Login /> } /> 
+             <Route path="/logout" element={ <Logout /> } />  
+             <Route path="/emp" element={ <EmpList /> } />
+             <Route path="/emp/new" element={ <EmpForm /> } />           
              <Route path='/mesas' element={ <MesasList /> } />
              <Route path='/cozinha' element={ <Cozinha /> } />
              <Route path='/card' element={ <CardForm /> } />
