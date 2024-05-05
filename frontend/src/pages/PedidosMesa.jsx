@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import { PrismaClient } from '@prisma/client'; // Importe o Prisma Client
+import { PrismaClient } from '@prisma/client'; 
 
 
 const prisma = new PrismaClient();

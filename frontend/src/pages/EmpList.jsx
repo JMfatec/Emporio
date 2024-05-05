@@ -18,7 +18,7 @@ import Waiting from '../components/ui/Waiting'
 export default function EmpList() {
 
   const [state, setState] = React.useState({
-    emp: {},
+    emps: {},
     openDialog: false,
     deleteId: null,
     showWaiting: false,
@@ -235,7 +235,7 @@ export default function EmpList() {
             size="large"
             startIcon={<AddBoxIcon />}
           >
-            Cadastrar novo cliente
+            Cadastrar novo funcionário
           </Button>
         </Link>
       </Box>

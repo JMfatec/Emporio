@@ -42,4 +42,7 @@ app.use('/pedido', pedidoRouter)
 import userRouter from './rotas/user.js'
 app.use('/user', userRouter)
 
+import empRouter from './rotas/emp.js'
+app.use('/emp', empRouter)
+
 export default app;
