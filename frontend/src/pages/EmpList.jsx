@@ -91,11 +91,18 @@ export default function EmpList() {
     {
       field: 'name',
       headerName: 'Nome',
-      width: 300
+      width: 250
     },
     {
       field: 'ident_document',
       headerName: 'CPF',
+      align: 'center',
+      headerAlign: 'center',
+      width: 150
+    },
+    {
+      field: 'neighborhood',
+      headerName: 'Cargo',
       align: 'center',
       headerAlign: 'center',
       width: 150

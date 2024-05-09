@@ -1,64 +1,251 @@
-import React from 'react';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
+import { DataGrid } from '@mui/x-data-grid';
+//import { format } from 'date-fns'
+import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-//import MesasList from './pages/MesasList'
+import IconButton from '@mui/material/IconButton'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import { Link } from 'react-router-dom'
+import ConfirmDialog from '../components/ui/ConfirmDialog'
+import myfetch from '../utils/myfetch'
+import Notification from '../components/ui/Notification'
+import Waiting from '../components/ui/Waiting'
 
+export default function Cozinha() {
 
+  const [state, setState] = React.useState({
+    pedidos: {},
+    openDialog: false,
+    deleteId: null,
+    showWaiting: false,
+    notification: {
+      show: false,
+      severity: 'success',
+      message: ''
+    }
+  })
 
-export default function Cozinha({ mesas }) {
+  // Desestruturando as variáveis de estado
+  const {
+    pedidos,
+    openDialog,
+    deleteId,
+    showWaiting,
+    notification
+  } = state
+
+  // Este useEffect() será executado apenas uma vez, durante o
+  // carregamento da página
+  React.useEffect(() => {
+    loadData()    // Carrega dos dados do back-end
+  }, [])
+
+  async function loadData(afterDeletion = false) {
+    // Exibe a tela de espera
+    setState({ ...state, showWaiting: true, openDialog: false })
+    try {
+      const result = await myfetch.get('pedido?related=1')
+
+      let notif = {
+        show: false,
+        severity: 'success',
+        message: ''
+      }
+
+      if(afterDeletion) notif = {
+        show: true,
+        severity: 'success',
+        message: 'Exclusão efetuada com sucesso.'
+      }
+
+      setState({
+        ...state, 
+        pedidos: result, 
+        showWaiting: false,
+        openDialog: false,
+        notification: notif
+      })
+    }
+    catch(error) {
+      setState({
+        ...state,
+        showWaiting: false,
+        openDialog: false,
+        notification: {
+          show: true,
+          severity: 'error',
+          message: 'ERRO: ' + error.message
+        }
+      })
+      // Exibimos o erro no console
+      console.error(error)
+    }
+  }
+
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 90 },
+    {
+      field: 'mesaID',
+      headerName: 'Mesa',
+      width: 150
+    },
+    {
+      field: 'produtoNome',
+      headerName: 'Pedido',
+      align: 'left',
+      headerAlign: 'left',
+      width: 250
+    },
+    {
+      field: 'quantidade',
+      headerName: 'Quantidade',
+      align: 'left',
+      headerAlign: 'left',
+      width: 150
+    },
+    {
+      field: 'emp_id',
+      headerName: 'Garçon',
+      width: 350,
+      valueGetter: params => {
+        return params.row?.emp?.name
+      }
+    },
+    {
+      field: 'valor',
+      headerName: 'Preço',
+      width: 300
+    },
+    {
+      field: 'edit',
+      headerName: 'Editar',
+      headerAlign: 'left',
+      align: 'left',
+      width: 150,
+      renderCell: params =>
+        <Link to={'./' + params.id}>
+          <IconButton aria-label="Editar">
+            <EditIcon />
+          </IconButton>
+        </Link> 
+    },
+    {
+      field: 'delete',
+      headerName: 'Excluir',
+      headerAlign: 'left',
+      align: 'left',
+      width: 100,
+      renderCell: params =>
+        <IconButton 
+          aria-label="Excluir"
+          onClick={() => handleDeleteButtonClick(params.id)}
+        >
+          <DeleteForeverIcon color="error" />
+        </IconButton>
+    }
+  ];
+
+  function handleDeleteButtonClick(id) {
+    setState({ ...state, deleteId: id, openDialog: true })
+  }
+
+  async function handleDialogClose(answer) {
+    // Fecha a caixa de diálogo de confirmação
+    setState({ ...state, openDialog: false })
+
+    if(answer) {
+      try {
+        // Faz a chamada ao back-end para excluir o cliente
+        await myfetch.delete(`pedido/${deleteId}`)
+        
+        // Se a exclusão tiver sido feita com sucesso, atualiza a listagem
+        loadData(true)
+      }
+      catch(error) {
+        setState({
+          ...state,
+          showWaiting: false,
+          openDialog: false,
+          notification: {
+            show: true,
+            severity: 'error',
+            message: 'ERRO: ' + error.message
+          }
+        })
+        console.error(error)
+      }
+    }
+  }
+
+  function handleNotificationClose() {
+    setState({...state, notification: { 
+      show: false,
+      severity: 'success',
+      message: ''
+    }});
+  }
+  
   return (
     <>
+
+      <ConfirmDialog
+        title="Confirmar operação"
+        open={openDialog}
+        onClose={handleDialogClose}
+      >
+        Deseja realmente excluir este item?
+      </ConfirmDialog>
+
+      <Waiting show={showWaiting} />
+
+      <Notification
+        show={notification.show}
+        severity={notification.severity}
+        message={notification.message}
+        onClose={handleNotificationClose}
+      />
+
       <Typography variant="h1" sx={{ mb: '50px' }}>
-        Cozinha
+        Listagem de Pedidos
       </Typography>
 
-      <hr />
-
-      {/* Lista de mesas e pedidos */}
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-        }}
-      >
-        {mesas.map((mesa, index) => (
-          <Paper
-            key={index}
-            elevation={3}
-            sx={{
-              padding: '10px',
-              marginBottom: '10px',
-              backgroundColor: 'white', // Cor de fundo para a mesa
-              width: 'calc(20% - 15px)', // 20% width com margem
-              boxSizing: 'border-box',
-              textAlign: 'center', // Centraliza o texto
-            }}
+      {/*<Box sx={{
+        display: 'flex',
+        justifyContent: 'right',
+        mb: '25px'  // margin-bottom
+      }}>
+        <Link to="new">
+          <Button 
+            variant="contained" 
+            color="secondary"
+            size="large"
+            startIcon={<AddBoxIcon />}
           >
-            <Typography variant="h6">Mesa {index + 1}</Typography>
+            Cadastrar novo pedido
+          </Button>
+        </Link>
+    </Box>*/}
 
-            {/* Lista de pedidos */}
-            <ul>
-              {mesa.pedidos.map((pedido, pedidoIndex) => (
-                <li key={pedidoIndex}>
-                  {pedido.produto}: {pedido.quantidade}x
-                </li>
-              ))}
-            </ul>
-
-            {/* Botão para marcar pedido como entregue */}
-            <IconButton aria-label="Remover" onClick={() => marcarPedidoEntregue(index)}>
-              <DeleteForeverIcon color="error" />
-            </IconButton>
-          </Paper>
-        ))}
-      </Box>
+      <Paper elevation={4} sx={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={pedidos}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 5,
+              },
+            },
+          }}
+          pageSizeOptions={[5]}
+          checkboxSelection
+          disableRowSelectionOnClick
+        />
+      </Paper>
     </>
-  );
-  
+  )
 }
-
-

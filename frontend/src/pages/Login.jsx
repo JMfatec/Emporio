@@ -108,7 +108,7 @@ export default function Login() {
     }}>
       
       <Typography variant="h1" sx={{ mb: '50px' }}>
-        Autentique-se
+        Bem Vindo !
       </Typography>
 
       <Paper sx={{ padding: '36px' }}>

@@ -99,18 +99,6 @@ export default function MesasList() {
     newProductHistory[selectedTable][productIndex].value = newValue;
     setState({ ...state, productHistory: newProductHistory });
   }
-
-  function Cozinha() {
-    //código para o componente Cozinha
-    return (
-      <div>
-        <h1>Cozinha</h1>
-        <MesasList /> {/* Aqui está usando o componente MesasList */}
-        {/* Outros elementos e lógica aqui */}
-      </div>
-    );
-  }
-  
  
   // Verifica se há algum item no histórico da mesa para definir a cor
   const tableColor = (index) =>
@@ -179,7 +167,7 @@ export default function MesasList() {
       {/* Menu para adicionar produtos */}
       {selectedTable !== null && (
         <div>
-          <Typography variant="h5">Histórico de Produtos</Typography>
+          <Typography variant="h5">Histórico de Pedidos</Typography>
           <table style={{ width: '100%', marginTop: '10px' }}>
             <thead>
               <tr>
@@ -244,7 +232,7 @@ export default function MesasList() {
             onClick={handleAddProduct}
             sx={{ mt: 2, mb: 2 }}
           >
-            Adicionar Produto
+            Adicionar Pedido
           </Button>
 
           <hr />

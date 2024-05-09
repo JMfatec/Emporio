@@ -19,9 +19,9 @@ export default function FooterBar() {
               }
         }}
         >
-          <Typography variant="caption" sx={{color: 'text.secondary'}}>
+          {/*<Typography variant="caption" sx={{color: 'text.secondary'}}>
              Desenvolvido com <CoffeeIcon fontSize='small'/> por <a href='mailto:joao.valeriano.silva@gmail.com'>João Marcos</a> e <a href='mailto:pepedro-henrique@hotmail.com'>Pedro Henrique</a>.Todos os direitos reservados.
-          </Typography>
+      </Typography>*/}
         </Toolbar>
     </>
   );

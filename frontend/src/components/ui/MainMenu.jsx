@@ -56,13 +56,13 @@ export default function MainMenu() {
           Mesas
         </MenuItem>
 
-        <MenuItem 
+        {/*<MenuItem 
           onClick={handleClose}
           component={Link}
           to="/card"
         >
           Autor
-        </MenuItem>
+      </MenuItem>*/}
         
         <MenuItem 
           onClick={handleClose}
