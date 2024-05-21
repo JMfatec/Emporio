@@ -420,9 +420,10 @@ export default function EmpForm() {
           
         </Box>
 
-        <Box sx={{ fontFamily: 'monospace' }}>
+        
+        {/*<Box sx={{ fontFamily: 'monospace' }}>
           { JSON.stringify(emp) }
-        </Box>
+          </Box>*/}
 
         <Toolbar sx={{ justifyContent: "space-around" }}>
           <Button 

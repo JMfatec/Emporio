@@ -2,7 +2,7 @@ import React from 'react'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper';
 import { DataGrid } from '@mui/x-data-grid';
-//import { format } from 'date-fns'
+import { format } from 'date-fns'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from '@mui/material/IconButton'
@@ -108,17 +108,37 @@ export default function Cozinha() {
       width: 150
     },
     {
-      field: 'emp_id',
+      field: 'name',
       headerName: 'Garçon',
-      width: 350,
+      width: 250,
       valueGetter: params => {
         return params.row?.emp?.name
       }
     },
     {
-      field: 'valor',
+      field: 'selling_price',
       headerName: 'Preço',
-      width: 300
+      headerAlign: 'right',
+      align: 'right',
+      width: 150,
+      valueFormatter: params => {
+        if(params.value) return Number(params.value).toLocaleString(
+          'pt-BR',  // Português do Brasil
+          { style: 'currency', currency: 'BRL' }   // Moeda: real brasileiro
+        )
+        else return ''
+      }
+    },
+    {
+      field: 'selling_date',
+      headerName: 'Data',
+      align: 'left',
+      headerAlign: 'left',
+      width: 100,
+      valueFormatter: params => {
+        if(params.value) return format(new Date(params.value), 'dd/MM/yyyy')
+        else return ''
+      }
     },
     {
       field: 'edit',

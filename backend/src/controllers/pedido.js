@@ -23,7 +23,7 @@ controller.retrieveAll = async function(req, res) {
 
     // Somente vai incluir entidades relacionadas se
     // a querystring "related" for passada na URL
-    if(req.query.related) include.mesa = true
+    if(req.query.related) include.emp = true
 
     const result = await prisma.pedido.findMany({
       include,
