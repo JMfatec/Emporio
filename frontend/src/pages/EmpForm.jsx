@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
@@ -17,6 +18,7 @@ import ptLocale from 'date-fns/locale/pt-BR'
 import { parseISO } from 'date-fns'
 import { ZodError } from 'zod'
 import Emp from '../models/emp'
+
 export default function EmpForm() {
 
   const navigate = useNavigate()
@@ -72,7 +74,7 @@ export default function EmpForm() {
     '9': '[0-9]',
     'a': '[A-Za-z]',
     '*': '[A-Za-z0-9]',
-    '_': '[\s0-9]'     // Um espaço em branco ou um dígito
+    '_': '[s0-9]'     // Um espaço em branco ou um dígito
   }
 
   // useEffect com vetor de dependências vazio. Será executado
@@ -84,6 +86,7 @@ export default function EmpForm() {
     if(params.id) fetchData()
   }, [])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function fetchData() {
     // Exibe o backdrop para indicar que uma operação está ocorrendo
     // em segundo plano
@@ -329,7 +332,7 @@ export default function EmpForm() {
             label="Cargo" 
             variant="filled"
             fullWidth
-            placeholder="Cozinheiro, garçom, etc."
+            
             value={emp.complements}
             onChange={handleFieldChange}
             error={validationErrors?.complements}

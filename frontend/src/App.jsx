@@ -45,7 +45,8 @@ function App() {
              <Route path="/login" element={ <Login /> } /> 
              <Route path="/logout" element={ <Logout /> } />  
              <Route path="/emp" element={ <EmpList /> } />
-             <Route path="/emp/new" element={ <EmpForm /> } />           
+             <Route path="/emp/new" element={ <EmpForm /> } />
+             <Route path="/emp/:id" element={ <EmpForm /> } />          
              <Route path='/mesas' element={ <MesasList /> } />
              <Route path='/cozinha' element={ <Cozinha /> } />
              <Route path='/card' element={ <CardForm /> } />

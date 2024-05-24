@@ -91,7 +91,7 @@ export default function EmpList() {
     {
       field: 'name',
       headerName: 'Nome',
-      width: 250
+      width: 150
     },
     {
       field: 'ident_document',
@@ -102,6 +102,13 @@ export default function EmpList() {
     },
     {
       field: 'neighborhood',
+      headerName: 'Bairro',
+      align: 'center',
+      headerAlign: 'center',
+      width: 150
+    },
+    {
+      field: 'complements',
       headerName: 'Cargo',
       align: 'center',
       headerAlign: 'center',
@@ -112,7 +119,7 @@ export default function EmpList() {
       headerName: 'Data nasc.',
       align: 'center',
       headerAlign: 'center',
-      width: 100,
+      width: 150,
       valueFormatter: params => {
         if(params.value) return format(new Date(params.value), 'dd/MM/yyyy')
         else return ''
@@ -121,7 +128,7 @@ export default function EmpList() {
     {
       field: 'municipality',
       headerName: 'Município/UF',
-      width: 300,
+      width: 150,
       // Colocando dois campos na mesma célula
       valueGetter: params => params.row.municipality + '/' + params.row.state
     },
@@ -135,7 +142,7 @@ export default function EmpList() {
     {
       field: 'email',
       headerName: 'E-mail',
-      width: 200
+      width: 150
     },
     {
       field: 'edit',

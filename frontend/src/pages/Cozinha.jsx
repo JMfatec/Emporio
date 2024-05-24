@@ -6,9 +6,9 @@ import { format } from 'date-fns'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from '@mui/material/IconButton'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import AddBoxIcon from '@mui/icons-material/AddBox';
+//import Box from '@mui/material/Box'
+//import Button from '@mui/material/Button'
+//import AddBoxIcon from '@mui/icons-material/AddBox';
 import { Link } from 'react-router-dom'
 import ConfirmDialog from '../components/ui/ConfirmDialog'
 import myfetch from '../utils/myfetch'
@@ -42,6 +42,7 @@ export default function Cozinha() {
   // carregamento da página
   React.useEffect(() => {
     loadData()    // Carrega dos dados do back-end
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function loadData(afterDeletion = false) {
