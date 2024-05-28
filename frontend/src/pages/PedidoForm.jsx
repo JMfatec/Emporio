@@ -77,7 +77,7 @@ export default function PedidoForm() {
     setState({ ...state, showWaiting: true })
     try {
 
-      let pedidos = pedidoDefaults
+      let pedido = pedidoDefaults
 
       // Se estivermos no modo de atualização, devemos carregar o
       // registro indicado no parâmetro da rota 
@@ -92,7 +92,7 @@ export default function PedidoForm() {
 
       // Cria um cliente "fake" que permite não selecionar nenhum
       // cliente
-      emps.unshift({id: null, name: '(Nenhum cliente)'})
+      emps.unshift({id: null, name: '(Nenhum garçom)'})
 
       setState({ ...state, showWaiting: false, pedido, emps })
 
@@ -291,7 +291,7 @@ export default function PedidoForm() {
             sx={{ justifyContent: "start" }}
             onChange={handleFieldChange} 
             control={<Switch defaultChecked />} 
-            label="Pronto" 
+            label="Necessita de preparo" 
             id="read" 
             name="read" 
             labelPlacement="start" 
@@ -337,7 +337,7 @@ export default function PedidoForm() {
             defaultValue=""
             fullWidth
             variant="filled"
-            // helperText="Selecione o cliente"
+            // helperText="Selecione o garçom"
             value={pedido.emp_id}
             onChange={handleFieldChange}
             error={validationErrors?.emp_id}
