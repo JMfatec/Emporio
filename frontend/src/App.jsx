@@ -13,11 +13,13 @@ import CssBaseline  from '@mui/material/CssBaseline';
 import MesasList from './pages/MesasList';
 import CardForm from './pages/CardForm';
 import './App.css'
-import Cozinha from './pages/Cozinha';
+//import Cozinha from './pages/Cozinha';
 import Login from './pages/Login'
 import Logout from './components/ui/Logout';
 import EmpList from './pages/EmpList'
 import EmpForm from './pages/EmpForm'
+import PedidoList from './pages/PedidoList'
+import PedidoForm from './pages/PedidoForm'
 
 
 //import './App.css'
@@ -48,7 +50,9 @@ function App() {
              <Route path="/emp/new" element={ <EmpForm /> } />
              <Route path="/emp/:id" element={ <EmpForm /> } />          
              <Route path='/mesas' element={ <MesasList /> } />
-             <Route path='/cozinha' element={ <Cozinha /> } />
+             <Route path='/pedido' element={ <PedidoList /> } />
+             <Route path="/pedido/new" element={ <PedidoForm /> } />
+             <Route path="/pedido/:id" element={ <PedidoForm /> } /> 
              <Route path='/card' element={ <CardForm /> } />
           </Routes>
 

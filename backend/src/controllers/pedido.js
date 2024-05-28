@@ -28,8 +28,8 @@ controller.retrieveAll = async function(req, res) {
     const result = await prisma.pedido.findMany({
       include,
       orderBy: [
-        { food: 'asc' },
-        { drink: 'asc' }
+        { mesa: 'asc' },
+        { produtoNome: 'asc' }
       ]
     })
 

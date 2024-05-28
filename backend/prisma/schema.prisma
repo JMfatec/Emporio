@@ -17,16 +17,18 @@ datasource db {
 model Mesa {
   id        Int      @id @default(autoincrement())
   numero    Int
-  pedidos   Pedido[]
 }
 
 model Pedido {
-  id           Int      @id @default(autoincrement())
-  mesa         Mesa     @relation(fields: [mesaId], references: [id])
-  mesaId       Int
-  produtoNome  String
-  quantidade   Int
-  valor        Float
+  id                Int      @id @default(autoincrement())
+  mesa              Int
+  produtoNome       String
+  quantidade        Int
+  selling_price     Decimal?              // Campo anulável
+  selling_date      DateTime?             // Campo anulável
+  ready             Boolean     @default(false)
+  emp_id            Int?        // Opcional
+  emp               Emp?   @relation(fields: [emp_id], references: [id])
 }
 
 model User{
@@ -45,10 +47,11 @@ model Emp {
   birth_date                DateTime? 
   street_name               String
   house_number              String
-  complements               String?     //Complemento do endereço
+  complements               String?     //Cargo empregado
   neighborhood              String               //Bairro
   municipality              String                
   state                     String
   phone                     String
   email                     String      @unique
+  pedidos                   Pedido[]       // pedidos realisados pelo garçom
 }

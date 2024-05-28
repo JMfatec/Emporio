@@ -6,16 +6,16 @@ import { format } from 'date-fns'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from '@mui/material/IconButton'
-//import Box from '@mui/material/Box'
-//import Button from '@mui/material/Button'
-//import AddBoxIcon from '@mui/icons-material/AddBox';
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import { Link } from 'react-router-dom'
 import ConfirmDialog from '../components/ui/ConfirmDialog'
 import myfetch from '../utils/myfetch'
 import Notification from '../components/ui/Notification'
 import Waiting from '../components/ui/Waiting'
 
-export default function Cozinha() {
+export default function PedidoList() {
 
   const [state, setState] = React.useState({
     pedidos: {},
@@ -90,7 +90,7 @@ export default function Cozinha() {
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     {
-      field: 'mesaID',
+      field: 'mesa',
       headerName: 'Mesa',
       width: 150
     },
@@ -109,8 +109,8 @@ export default function Cozinha() {
       width: 150
     },
     {
-      field: 'name',
-      headerName: 'Garçon',
+      field: 'emp_ip',
+      headerName: 'Garçom',
       width: 250,
       valueGetter: params => {
         return params.row?.emp?.name
@@ -234,7 +234,7 @@ export default function Cozinha() {
         Listagem de Pedidos
       </Typography>
 
-      {/*<Box sx={{
+      <Box sx={{
         display: 'flex',
         justifyContent: 'right',
         mb: '25px'  // margin-bottom
@@ -249,7 +249,7 @@ export default function Cozinha() {
             Cadastrar novo pedido
           </Button>
         </Link>
-    </Box>*/}
+    </Box>
 
       <Paper elevation={4} sx={{ height: 400, width: '100%' }}>
         <DataGrid
