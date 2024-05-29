@@ -99,7 +99,7 @@ export default function PedidoList() {
       headerName: 'Pedido',
       align: 'left',
       headerAlign: 'left',
-      width: 250
+      width: 150
     },
     {
       field: 'quantidade',
@@ -109,11 +109,12 @@ export default function PedidoList() {
       width: 150
     },
     {
-      field: 'emp_ip',
-      headerName: 'Garçom',
-      width: 250,
-      valueGetter: params => {
-        return params.row?.emp?.name
+      field: 'read',
+      headerName: 'Necessita de preparo',
+      width: 150,
+      valueFormatter: params => {
+        if(params.value === true)  return 'Sim'
+        return 'Não'
       }
     },
     {
@@ -135,10 +136,18 @@ export default function PedidoList() {
       headerName: 'Data',
       align: 'left',
       headerAlign: 'left',
-      width: 100,
+      width: 200,
       valueFormatter: params => {
         if(params.value) return format(new Date(params.value), 'dd/MM/yyyy')
         else return ''
+      }
+    },
+    {
+      field: 'emp_ip',
+      headerName: 'Garçom',
+      width: 150,
+      valueGetter: params => {
+        return params.row?.emp?.name
       }
     },
     {

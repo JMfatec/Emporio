@@ -10,14 +10,13 @@ import Waiting from '../components/ui/Waiting'
 import Notification from '../components/ui/Notification'
 import { useNavigate, useParams } from 'react-router-dom'
 import ConfirmDialog from '../components/ui/ConfirmDialog'
-//import InputMask from 'react-input-mask'
 import {DatePicker, LocalizationProvider} from '@mui/x-date-pickers'
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns'
 import ptLocale from 'date-fns/locale/pt-BR'
 import { parseISO } from 'date-fns'
 import { FormControlLabel, Switch } from '@mui/material'
 import InputAdornment from '@mui/material/InputAdornment'
-//import Pedido from '../models/pedido'
+import Pedido from '../models/pedido'
 import { ZodError } from 'zod'
 
 export default function PedidoForm() {
@@ -252,6 +251,7 @@ export default function PedidoForm() {
             variant="filled"
             required
             fullWidth
+            type="number"
             value={pedido.mesa}
             onChange={handleFieldChange}
             autoFocus
@@ -280,6 +280,7 @@ export default function PedidoForm() {
             variant="filled"
             required
             fullWidth
+            type="number"
             value={pedido.quantidade}
             onChange={handleFieldChange}
             error={validationErrors?.quantidade}

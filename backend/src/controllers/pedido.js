@@ -4,7 +4,19 @@ const controller = {}     // Objeto vazio
 
 controller.create = async function(req, res) {
   try {
-    await prisma.pedido.create({ data: req.body })
+    const { mesa, quantidade, produtoNome, selling_price, selling_date, ready, emp_id } = req.body
+    
+    await prisma.pedido.create({
+      data: {
+        mesa: parseInt(mesa), // Convertendo mesa para inteiro
+        quantidade: parseInt(quantidade), // Convertendo quantidade para inteiro
+        produtoNome,
+        selling_price,
+        selling_date: new Date(selling_date), // Convertendo a data para o formato Date
+        ready,
+        emp_id: emp_id ? parseInt(emp_id) : null // Convertendo emp_id para inteiro se existir
+      }
+    })
 
     // HTTP 201: Created
     res.status(201).end()
@@ -17,8 +29,7 @@ controller.create = async function(req, res) {
 }
 
 controller.retrieveAll = async function(req, res) {
-  try{
-
+  try {
     let include = {}    // Por padrão, não inclui nenhum relacionamento
 
     // Somente vai incluir entidades relacionadas se
@@ -63,9 +74,19 @@ controller.retrieveOne = async function(req, res) {
 
 controller.update = async function(req, res) {
   try {
+    const { mesa, quantidade, produtoNome, selling_price, selling_date, ready, emp_id } = req.body
+    
     const result = await prisma.pedido.update({
       where: { id: Number(req.params.id) },
-      data: req.body
+      data: {
+        mesa: parseInt(mesa), // Convertendo mesa para inteiro
+        quantidade: parseInt(quantidade), // Convertendo quantidade para inteiro
+        produtoNome,
+        selling_price,
+        selling_date: new Date(selling_date), // Convertendo a data para o formato Date
+        ready,
+        emp_id: emp_id ? parseInt(emp_id) : null // Convertendo emp_id para inteiro se existir
+      }
     })
 
     // HTTP 204: No content
