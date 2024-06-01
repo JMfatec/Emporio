@@ -99,7 +99,7 @@ export default function PedidoList() {
       headerName: 'Pedido',
       align: 'left',
       headerAlign: 'left',
-      width: 150
+      width: 200
     },
     {
       field: 'quantidade',
@@ -109,12 +109,12 @@ export default function PedidoList() {
       width: 150
     },
     {
-      field: 'read',
+      field: 'ready',
       headerName: 'Necessita de preparo',
       width: 150,
       valueFormatter: params => {
-        if(params.value === true)  return 'Sim'
-        return 'Não'
+        if(params.value === true) return 'Sim'
+         return 'Não'       
       }
     },
     {

@@ -6,9 +6,9 @@ const Pedido = z.object({
     produtoNome: 
         z.string()
         .min(1, { message: 'Preencha este campo' })
-        .max(25, { message: 'Número de caracteres excedido' }),
+        .max(30, { message: 'Número de caracteres excedido' }),
     
-    read: 
+    ready: 
         z.boolean(),
     
     selling_date: 
@@ -18,7 +18,7 @@ const Pedido = z.object({
     
     selling_price: 
         z.coerce.number()
-        .min(10, { message: 'O preço do carro deve ser de pelo menos 10 R$' })
+        .min(10, { message: 'O preço do pedido deve ser de pelo menos 10 R$' })
         .nullable(),
     
     emp_id: 

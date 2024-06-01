@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
@@ -30,7 +31,7 @@ export default function PedidoForm() {
     quantidade: '',
     selling_price: '',
     selling_date: '',
-    read: false,
+    ready: false,
     emp_id: ''
   }
 
@@ -68,6 +69,7 @@ export default function PedidoForm() {
     // Caso exista, chama a função fetchData() para carregar
     // os dados indicados pelo parâmetro para edição
     fetchData(params.id)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function fetchData(isUpdating) {
@@ -111,7 +113,7 @@ export default function PedidoForm() {
   function handleFieldChange(event) {
     const newPedido = { ...pedido }
     
-    if (event.target.name === 'read'){
+    if (event.target.name === 'ready'){
       newPedido[event.target.name] = event.target.checked
     } else {
       newPedido[event.target.name] = event.target.value
@@ -293,12 +295,12 @@ export default function PedidoForm() {
             onChange={handleFieldChange} 
             control={<Switch defaultChecked />} 
             label="Necessita de preparo" 
-            id="read" 
-            name="read" 
+            id="ready" 
+            name="ready" 
             labelPlacement="start" 
-            checked={pedido.read}
-            error={!!validationErrors?.read}
-            helperText={validationErrors?.read}
+            checked={pedido.ready}
+            error={!!validationErrors?.ready}
+            helperText={validationErrors?.ready}
           />
 
           <TextField 
@@ -353,9 +355,9 @@ export default function PedidoForm() {
           
         </Box>
 
-        <Box sx={{ fontFamily: 'monospace' }}>
+        {/*<Box sx={{ fontFamily: 'monospace' }}>
           { JSON.stringify(pedido) }
-        </Box>
+            </Box>*/}
 
         <Toolbar sx={{ justifyContent: "space-around" }}>
           <Button 
