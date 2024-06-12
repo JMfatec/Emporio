@@ -1,7 +1,7 @@
 //import * as React from 'react';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import CoffeeIcon from '@mui/icons-material/Coffee';
+//import Typography from '@mui/material/Typography';
+//import CoffeeIcon from '@mui/icons-material/Coffee';
 
 export default function FooterBar() {
   return (
