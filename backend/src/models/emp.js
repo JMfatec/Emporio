@@ -1,13 +1,13 @@
 import { z } from 'zod'
 import { cpf } from 'cpf-cnpj-validator'
 
-// O cliente deve ser maior de 18 anos
+// O funcionário deve ser maior de 18 anos
 // Por isso, para validar, calculamos a data máxima em que
-// o cliente pode ter nascido para ter 18 anos na data de hoje
+// o funcionário pode ter nascido para ter 18 anos na data de hoje
 const maxBirthDate = new Date()   // Hoje
 maxBirthDate.setFullYear(maxBirthDate.getFullYear() - 18)  // Data há 18 anos atrás
 
-// O cliente pode ter nascido, no máximo, há 120 anos
+// O funcionário pode ter nascido, no máximo, há 120 anos
 const minBirthDate = new Date()
 minBirthDate.setFullYear(maxBirthDate.getFullYear() - 120)
 
@@ -27,7 +27,7 @@ const Emp = z.object({
     // coerce força a conversão para o tipo Date, se o dado recebido for string
     z.coerce.date()
     .min(minBirthDate, { message: 'Data de nascimento está muito no passado'})
-    .max(maxBirthDate, { message: 'O cliente deve ser maior de 18 anos' })
+    .max(maxBirthDate, { message: 'O funcionário deve ser maior de 18 anos' })
     .nullable(),
   
   street_name: 
@@ -40,7 +40,7 @@ const Emp = z.object({
   
   complements: 
     z.string()
-    .max(20, { message: 'O complemento pode conter, no máximo, 20 caracteres' })
+    .max(20, { message: 'O cargo pode conter, no máximo, 20 caracteres' })
     .nullable(),
   
   neighborhood: 
